@@ -37,6 +37,8 @@ RUN cd /tmp/myapp && jar -xvf ace-java-demo-1.0.0.war
 RUN rm -rf ace-java-demo-1.0.0.war
 RUN cp -R /tmp/myapp /opt/tomcat7/webapps/myapp
   
+RUN cat /opt/tomcat7/conf/tomcat-users.xml
+
 # Expose ports.  
 EXPOSE 8080  
   
