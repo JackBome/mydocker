@@ -30,6 +30,8 @@ ENV PATH $PATH:$CATALINA_HOME/bin
   
 ADD tomcat7.sh /etc/init.d/tomcat7  
 RUN chmod 755 /etc/init.d/tomcat7  
+
+ADD ace-java-demo-1.0.0.war /opt/tomcat7/webapps
   
 # Expose ports.  
 EXPOSE 8080  
