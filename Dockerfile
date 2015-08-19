@@ -17,7 +17,7 @@ RUN mv /tmp/jdk1.7.0_65/ /usr/lib/jvm/java-7-oracle/
   
 # Set Oracle JDK 7 as default Java  
 RUN update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-7-oracle/bin/java 300     
-RUN update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-7-oracle/bin/javac 300     
+RUN update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-7-oracle/bin/javac 300  
   
 ENV JAVA_HOME /usr/lib/jvm/java-7-oracle/  
   
@@ -26,7 +26,7 @@ RUN cd /tmp && curl -L 'http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.8/bi
 RUN mv /tmp/apache-tomcat-7.0.8/ /opt/tomcat7/  
   
 ENV CATALINA_HOME /opt/tomcat7  
-ENV PATH $PATH:$CATALINA_HOME/bin  
+ENV PATH $PATH:$CATALINA_HOME/bin:$JAVA_HOME/bin  
   
 ADD tomcat7.sh /etc/init.d/tomcat7  
 RUN chmod 755 /etc/init.d/tomcat7  
