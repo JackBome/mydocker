@@ -32,11 +32,10 @@ ADD tomcat7.sh /etc/init.d/tomcat7
 RUN chmod 755 /etc/init.d/tomcat7  
 
 RUN mkdir /tmp/myapp
-ADD ttt /tmp/myapp
-RUN chmod 755 /tmp/myapp/ttt
-RUN cd /tmp/myapp/ttt && rename .tmp .war *.tmp
-RUN jar -xvf ace-java-demo-1.0.0.war
-RUN cp -R /tmp/myapp/ttt /opt/tomcat7/webapps/myapp
+ADD ace-java-demo-1.0.0.war /tmp/myapp/
+RUN cd /tmp/myapp && jar -xvf ace-java-demo-1.0.0.war
+RUN rm -rf ace-java-demo-1.0.0.war
+RUN cp -R /tmp/myapp /opt/tomcat7/webapps/myapp
   
 # Expose ports.  
 EXPOSE 8080  
