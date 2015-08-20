@@ -27,9 +27,6 @@ RUN mv /tmp/apache-tomcat-7.0.8/ /opt/tomcat7/
   
 ENV CATALINA_HOME /opt/tomcat7  
 ENV PATH $PATH:$CATALINA_HOME/bin:$JAVA_HOME/bin  
-  
-ADD tomcat7.sh /etc/init.d/tomcat7  
-RUN chmod 755 /etc/init.d/tomcat7  
 
 RUN mkdir /tmp/myapp
 ADD ace-java-demo-1.0.0.war /tmp/myapp/
@@ -42,8 +39,11 @@ RUN cat /opt/tomcat7/conf/tomcat-users.xml
 RUN ls /opt/tomcat7/conf
 RUN ls /opt/tomcat7/webapps
 
+ADD tomcat7.sh /etc/init.d/tomcat7  
+RUN chmod 755 /etc/init.d/tomcat7  
+
 # Expose ports.  
 EXPOSE 8080  
   
 # Define default command.  
-ENTRYPOINT service tomcat7 start && tail -f /opt/tomcat7/logs/catalina.out
+ENTRYPOINT service tomcat7 restart && tail -f /opt/tomcat7/logs/catalina.out
