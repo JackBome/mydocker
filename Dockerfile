@@ -48,3 +48,5 @@ EXPOSE 8080
   
 # Define default command.  
 ENTRYPOINT service tomcat7 restart && tail -f /opt/tomcat7/logs/catalina.out
+
+RUN ls /opt/tomcat7/webapps
