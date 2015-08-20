@@ -28,12 +28,13 @@ RUN mv /tmp/apache-tomcat-7.0.8/ /opt/tomcat7/
 ENV CATALINA_HOME /opt/tomcat7  
 ENV PATH $PATH:$CATALINA_HOME/bin:$JAVA_HOME/bin  
 
-# RUN mkdir /tmp/myapp
 # ADD ace-java-demo-1.0.0.war /tmp/myapp/
 # RUN cd /tmp/myapp && jar -xvf ace-java-demo-1.0.0.war
 # RUN rm -rf ace-java-demo-1.0.0.war
 # RUN cp -R /tmp/myapp /opt/tomcat7/webapps/myapp
-ADD ace-java-demo-1.0.0.war /opt/tomcat7/webapps/
+RUN mkdir /opt/tomcat7/webapps/myapp
+ADD ace-java-demo-1.0.0.war /opt/tomcat7/webapps/myapp/
+RUN cd /opt/tomcat7/webapps/myapp/ && jar -xvf ace-java-demo-1.0.0.war
  
 ADD tomcat-users.xml /opt/tomcat7/conf/tomcat-users.xml
 RUN cat /opt/tomcat7/conf/tomcat-users.xml
@@ -49,4 +50,4 @@ EXPOSE 8080
 # Define default command.  
 ENTRYPOINT service tomcat7 restart && tail -f /opt/tomcat7/logs/catalina.out
 
-RUN ls /opt/tomcat7/webapps
+RUN ls /opt/tomcat7/webapps/myapp
