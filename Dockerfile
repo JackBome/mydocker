@@ -40,6 +40,7 @@ RUN cp -R /tmp/myapp /opt/tomcat7/webapps/myapp
 ADD tomcat-users.xml /opt/tomcat7/conf/tomcat-users.xml
 RUN cat /opt/tomcat7/conf/tomcat-users.xml
 RUN ls /opt/tomcat7/conf
+RUN ls /opt/tomcat7/webapps
 
 # Expose ports.  
 EXPOSE 8080  
