@@ -32,13 +32,14 @@ ENV PATH $PATH:$CATALINA_HOME/bin:$JAVA_HOME/bin
 # RUN cd /tmp/myapp && jar -xvf ace-java-demo-1.0.0.war
 # RUN rm -rf ace-java-demo-1.0.0.war
 # RUN cp -R /tmp/myapp /opt/tomcat7/webapps/myapp
-RUN mkdir /opt/tomcat7/webapps/myapp
-ADD ace-java-demo-1.0.0.war /opt/tomcat7/webapps/myapp/
-RUN cd /opt/tomcat7/webapps/myapp/ && jar -xvf ace-java-demo-1.0.0.war
+# RUN mkdir /opt/tomcat7/webapps/myapp
+RUN rm -rf /opt/tomcat7/webapps/ROOT/*
+ADD ace-java-demo-1.0.0.war /opt/tomcat7/webapps/ROOT/ace-java-demo-1.0.0.war
+RUN cd /opt/tomcat7/webapps/ROOT/ && jar -xvf ace-java-demo-1.0.0.war
  
 ADD tomcat-users.xml /opt/tomcat7/conf/tomcat-users.xml
-ADD server.xml /opt/tomcat7/conf/server.xml
-RUN cat /opt/tomcat7/conf/tomcat-users.xml
+# ADD server.xml /opt/tomcat7/conf/server.xml
+RUN cat /opt/tomcat7/conf/serv*.xml
 RUN ls /opt/tomcat7/conf
 RUN ls /opt/tomcat7/webapps
 
