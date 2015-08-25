@@ -137,7 +137,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
-		<Context path="" docBase="D:/apache-tomcat-7.0.63/webapps/myapp" debug="0"/>
+		<Context path="" docBase="/opt/tomcat7/webapps/myapp" debug="0"/>
       </Host>
     </Engine>
   </Service>
