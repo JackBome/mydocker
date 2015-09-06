@@ -45,10 +45,15 @@ RUN ls /opt/tomcat7/webapps
 
 ADD tomcat7.sh /etc/init.d/tomcat7  
 RUN chmod 755 /etc/init.d/tomcat7  
-
-# Expose ports.  
-EXPOSE 8080  
   
+# install nginx
+RUN apt-get install nginx -y
+ADD ./nginx/nginx-conf /etc/nginx/conf.d
+
+# Expose ports
+EXPOSE 80
+
+
 # Define default command.  
 ENTRYPOINT service tomcat7 start && tail -f /opt/tomcat7/logs/catalina.out
 

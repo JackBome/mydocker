@@ -4,6 +4,7 @@ export TOMCAT_HOME=/opt/tomcat7
 case $1 in  
 start)  
   sh $TOMCAT_HOME/bin/startup.sh  
+  nginx
 ;;  
 stop)  
   sh $TOMCAT_HOME/bin/shutdown.sh  
